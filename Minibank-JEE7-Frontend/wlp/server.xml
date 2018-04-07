@@ -1,0 +1,29 @@
+<server description="Liberty for frontend">
+
+	<!-- Enable features -->
+	<featureManager>
+		<feature>localConnector-1.0</feature>
+		<feature>jsp-2.3</feature>
+		<feature>ssl-1.0</feature>
+		<feature>servlet-3.1</feature>
+		<feature>jaxrs-2.0</feature>
+		<feature>jsonp-1.0</feature>
+        <feature>jca-1.7</feature>
+        <feature>cdi-1.2</feature>
+        <feature>jsf-2.2</feature>
+        <feature>jpa-2.1</feature>
+    </featureManager>
+	<keyStore id="defaultKeyStore" password="{xor}MzY9Oi0rJg=="/>
+
+	<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" securityLevel="LOW" sslProtocol="TLS"/>
+
+	<!-- To access this server from a remote client add a host attribute to 
+		the following element, e.g. host="*" -->
+	<httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+	<!-- Automatically expand WAR files and EAR files -->
+	<applicationManager autoExpand="true" startTimeout="60s"/>
+
+	<applicationMonitor updateTrigger="mbean"/>
+
+    <webApplication id="com.ibm.cicsdev.minibank.frontend" location="com.ibm.cicsdev.minibank.frontend.war" name="com.ibm.cicsdev.minibank.frontend"/>
+</server>
